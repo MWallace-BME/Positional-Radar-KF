@@ -72,4 +72,4 @@ cd kalman
 
 ## Acknowledgments
 
-Radar design and validation approach based on N. Woo's 2021 UNR thesis (UNR Microwaves Lab, advisor: Dr. Yoon). Some deliverable drafting and design assistance for this project used Claude (Anthropic), per instructor-approved AI use for learning/checking (cited per UAM 6,502).
+Radar design and validation approach based on N. Woo's 2021 UNR thesis (UNR Microwaves Lab, advisor: Dr. Yoon).
