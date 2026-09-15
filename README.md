@@ -64,7 +64,7 @@ cd kalman
 | Technical Lead / Hardware Dev — Julian Estorga | 426 | 
 | Software Dev 1 (application + firmware) — Ayla Velasquez | 426 | 
 | Software Dev 2 (firmware) — Hayden Walsh | 426 | 
-| Kalman filter design & validation | 782 | — Cade Ball, Matthew Wallace   
+| Kalman filter design & validation  — Cade Ball, Matthew Wallace | 782 |   
 
 ## Branching / workflow
 
