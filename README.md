@@ -61,9 +61,9 @@ cd kalman
 | Role | Course |
 |---|---|
 | Project Manager & Administrative Lead — Matthew Wallace | 626 |
-| Technical Lead / Hardware Dev | 426 | — Julian Estorga
-| Software Dev 1 (application + firmware) | 426 | — Ayla Velasquez
-| Software Dev 2 (firmware) | 426 | — Hayden Walsh
+| Technical Lead / Hardware Dev — Julian Estorga | 426 | 
+| Software Dev 1 (application + firmware) — Ayla Velasquez | 426 | 
+| Software Dev 2 (firmware) — Hayden Walsh | 426 | 
 | Kalman filter design & validation | 782 | — Cade Ball, Matthew Wallace   
 
 ## Branching / workflow
