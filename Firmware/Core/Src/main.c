@@ -31,7 +31,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RAMP_LEN 128
+#define RAMP_LEN 64
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -105,9 +105,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
   char msg[] = "Convergence Radar alive\r\n";
     HAL_UART_Transmit(&huart2, (uint8_t*)msg, sizeof(msg) - 1, HAL_MAX_DELAY);
-
+    /* 1 ms sawtooth: 64 steps, ~0.2 V to ~2.7 V (DAC codes 248..3351) */
     for (int i = 0; i < RAMP_LEN; i++) {
-      ramp[i] = 310 + (uint16_t)((3785 - 310) * i / (RAMP_LEN - 1));
+    	ramp[i] = 248 + (uint16_t)((3351 - 248) * i / (RAMP_LEN - 1));
     }
     HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t*)ramp, RAMP_LEN, DAC_ALIGN_12B_R);
     HAL_TIM_Base_Start(&htim2);
@@ -247,7 +247,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 43944;
+  htim2.Init.Period = 1405;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
