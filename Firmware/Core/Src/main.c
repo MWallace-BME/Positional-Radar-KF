@@ -21,7 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+/* USER CODE BEGIN Includes */
+#include "radar.h"
+/* USER CODE END Includes */
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,7 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RAMP_LEN 64
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -56,7 +58,7 @@ TIM_HandleTypeDef htim2;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint16_t ramp[RAMP_LEN];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -115,14 +117,9 @@ int main(void)
   MX_ADC2_Init();
   MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-  char msg[] = "Convergence Radar alive\r\n";
-    HAL_UART_Transmit(&huart2, (uint8_t*)msg, sizeof(msg) - 1, HAL_MAX_DELAY);
-    /* 1 ms sawtooth: 64 steps, ~0.2 V to ~2.7 V (DAC codes 248..3351) */
-    for (int i = 0; i < RAMP_LEN; i++) {
-    	ramp[i] = 248 + (uint16_t)((3351 - 248) * i / (RAMP_LEN - 1));
-    }
-    HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t*)ramp, RAMP_LEN, DAC_ALIGN_12B_R);
-    HAL_TIM_Base_Start(&htim2);
+  /* USER CODE BEGIN 2 */
+  radar_start();
+  /* USER CODE END 2 */
   /* USER CODE END 2 */
 
   /* Initialize leds */
@@ -139,9 +136,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	    BSP_LED_Toggle(LED2);
-	    HAL_Delay(500);
-	  }
+	  /* USER CODE BEGIN 3 */
+	  radar_loop();
+	}
+	/* USER CODE END 3 */
   /* USER CODE END 3 */
 }
 
